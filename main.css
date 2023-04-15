@@ -1,0 +1,219 @@
+*{
+    box-sizing: border-box;
+}
+.container{
+        width: 1000px;
+        margin: 20px auto;
+        font-family: Tahoma , Arial;
+}
+
+.game-info{
+    display: flex;
+    font-size: 30px;
+}
+.game-info .game-name{
+    flex: 1;
+}
+.game-info .category{
+    flex: 1;
+    text-align: right;
+}
+.game-info .category span{
+   color:#E91E63;
+   text-transform: capitalize;
+}
+hr{
+    border: 1px solid #ccc;
+}
+.row{
+    display: flex;
+}
+.hangman{
+    flex: 1;
+    background-color: #F7F7F7;
+    padding: 20px;
+    height: 440px;
+}
+.draw{
+    width: 60px;
+    height: 350px;
+    border-bottom: 4px solid #222;
+    position: relative;
+    margin: auto;
+}
+.stand {
+    position: absolute;
+    height: 350px;
+    width: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #222;
+    top: 0px;
+}
+.hang::before{
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0px ;
+    height: 4px;
+    width: 130px;
+    background-color: #222;
+}
+.hang::after{
+    content: '';
+    position: absolute;
+    left: calc(100% + 130px - 30px);
+    top: 0px ;
+    width: 4px;
+    height: 60px;
+    background-color: #222;
+}
+.rope{
+    position: absolute;
+    left: calc(100% + 130px - 30px - 50px + 4px);
+    top: calc(50px + 8px);
+    border: 4px solid #222;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.head{
+    position: absolute;
+    left: calc(100% + 130px - 30px - 35px + 4px);
+    top: calc(50px + 8px + 15px);
+    border: 4px dashed #222;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.body{
+    position: absolute;
+    /* left: calc(100% + 130px - 30px - 50px + 4px + 50px); */
+    left: 160px;
+    top: calc(50px + 6px + 85px);
+    width: 4px;
+    height: 150px;
+    background-color: #222;
+}
+.hands::before , .hands::after{
+    content: '';
+    background-color: #222;
+    position: absolute;
+    width: 4px;
+    height: 70px;
+    left: 141.5px;
+    top: calc(50px + 6px + 85px + 10px);
+}
+.hands::after{
+    transform: rotate(-30deg);
+}
+.hands::before{
+    transform: rotate(30deg);
+    left: 178.5px;
+}
+.legs::before , .legs::after{
+    content: '';
+    background-color: #222;
+    position: absolute;
+    width: 4px;
+    height: 70px;
+    left: 141.5px;
+    top: calc(50px + 6px + 85px + 145px);
+}
+.legs::after{
+    transform: rotate(30deg);
+}
+.legs::before{
+    transform: rotate(-30deg);
+    left: 178.5px;
+}
+.draw , .draw div:not(:last-of-type) , .legs {
+    display: none;
+}
+.hangman.wrong-1 .draw{
+    display: block;
+}
+.hangman.wrong-2 .stand{
+    display: block;
+}
+.hangman.wrong-3 .hang{
+    display: block;
+}
+.hangman.wrong-4 .rope{
+    display: block;
+}
+.hangman.wrong-5   .man .head{
+    display: block;
+}
+.hangman.wrong-6 .body{
+    display: block;
+}
+.hangman.wrong-7 .hands{
+    display: block;
+}
+.hangman.wrong-8 .legs{
+    display: block;
+}
+
+.letters{
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+.letters.finished{
+    pointer-events: none;
+}
+.letter-box{
+    background-color: #009688;
+    color: white;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    margin-bottom:10px;
+    margin-right:10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.letter-box.clicked{
+    background-color: #222;
+    opacity: 0.2;
+    pointer-events: none;
+}
+.letter-guess{
+    margin: 7px auto;
+    height: 200px;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.letter-guess span{
+display: inline-block;
+height: 50px;
+width: 50px;
+border-bottom: 2px solid black;
+margin-right: 10px;
+background-color: white;
+font-size: 24px;
+padding: 10px;
+padding-left: 15px;
+}
+.letter-guess span.space{
+border: none;
+height: 4px;
+width: 20px;
+background-color: black;
+}
+.popup{
+    background-color: #009688;
+    color: white;
+    font-size: 40px;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    box-shadow: 1px 1px 3px 1px black;
+    width: 80%;
+    padding: 100px 10px;
+    text-align: center;
+}
